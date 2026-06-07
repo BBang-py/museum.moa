@@ -1,0 +1,3487 @@
+
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:"Arial","Apple SD Gothic Neo",sans-serif;background:#f4eee3;color:#2f241d;line-height:1.55;}
+a{text-decoration:none;color:inherit;}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(244,238,227,.92);backdrop-filter:blur(12px);border-bottom:1px solid #dfd0bc;}
+.topbar-inner{max-width:1400px;margin:0 auto;padding:20px 30px;display:flex;justify-content:space-between;align-items:center;}
+.brand{font-family:Georgia,serif;font-size:31px;font-weight:700;letter-spacing:-.6px;}
+.nav-links{display:flex;gap:26px;align-items:center;}
+.top-link{font-size:15px;color:#6a594a;border-bottom:1px solid #6a594a;padding-bottom:3px;transition:.2s;}
+.top-link:hover{color:#2f241d;border-color:#2f241d;}
+
+.intro-hero{position:relative;width:100%;height:100vh;background:#e8e3da;overflow:hidden;}
+.hero-map{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center center;padding:56px 120px 64px;background:#e8e3da;opacity:.94;animation:mapSlowZoom 8s ease-in-out infinite alternate;transform-origin:center center;}
+@keyframes mapSlowZoom{from{transform:scale(1);}to{transform:scale(1.07);}}
+.hero-overlay{position:relative;z-index:2;width:100%;height:100%;}
+.hero-comment{position:absolute;left:80px;bottom:150px;max-width:650px;color:#2f241d;}
+.hero-label{display:block;margin-bottom:14px;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#8b7359;}
+.hero-comment h1{font-family:Georgia,serif;font-size:60px;line-height:1.08;margin-bottom:18px;letter-spacing:-1.5px;}
+.hero-comment p{font-size:18px;line-height:1.8;color:#5f5043;max-width:620px;}
+.hero-stats{position:absolute;top:72px;right:78px;display:flex;flex-direction:column;gap:22px;text-align:right;}
+.stat-box{min-width:170px;padding:0;background:transparent;border:none;border-radius:0;box-shadow:none;}
+.stat-box::after{content:"";display:block;width:165px;height:6px;background:#8b7359;margin:10px 0 0 auto;border-radius:999px;}
+.stat-title{display:block;font-size:16px;font-weight:700;color:#6d5a48;margin-bottom:4px;}
+.stat-number{display:block;font-size:48px;font-weight:800;line-height:1;color:#2f241d;letter-spacing:-1px;}
+.hero-scroll{position:absolute;left:80px;bottom:86px;z-index:3;font-size:16px;font-weight:700;color:#5f5043;border-bottom:3px solid #8b7359;padding-bottom:7px;}
+
+.page{max-width:1400px;margin:0 auto;padding:62px 30px 94px;}
+.heading{margin-bottom:34px;display:grid;grid-template-columns:1fr .92fr;gap:52px;align-items:end;}
+.heading .small{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#8b7359;margin-bottom:14px;}
+.heading h1{font-family:Georgia,serif;font-size:54px;line-height:1.08;letter-spacing:-1.3px;font-weight:700;}
+.heading p{font-size:18px;color:#5f5043;max-width:620px;}
+
+.layout{display:grid;grid-template-columns:290px 1fr;gap:34px;align-items:start;}
+.filter-panel{position:sticky;top:104px;background:#fffaf3;border:1px solid #dccdb8;border-radius:26px;padding:26px;box-shadow:0 16px 38px rgba(47,36,29,.08);}
+.filter-panel h2{font-family:Georgia,serif;font-size:27px;margin-bottom:22px;letter-spacing:-.4px;}
+.filter-group{margin-bottom:22px;}
+.filter-group label.title{display:block;font-size:13px;font-weight:700;letter-spacing:.3px;margin-bottom:10px;color:#5e4f43;}
+.search-input,.filter-select{width:100%;padding:13px 14px;border:1px solid #d5c4ad;border-radius:15px;background:#fdf9f3;font-size:15px;outline:none;color:#2f241d;}
+.search-input:focus,.filter-select:focus{border-color:#9e876a;background:#fff;}
+.reset-btn{width:100%;margin-top:8px;padding:13px 16px;border:none;border-radius:999px;background:#2f241d;color:white;font-size:15px;font-weight:700;cursor:pointer;transition:.2s;}
+.reset-btn:hover{background:#4c3d31;}
+.result-mini{margin-top:18px;padding-top:18px;border-top:1px solid #e3d6c4;font-size:14px;color:#6a594a;}
+.result-mini strong{color:#2f241d;}
+
+.content-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.result-text{font-size:16px;color:#645648;}
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.museum-card{background:#fffaf3;border:1px solid #dccdb8;border-radius:22px;padding:22px;box-shadow:0 12px 28px rgba(47,36,29,.07);display:flex;flex-direction:column;justify-content:space-between;min-height:150px;transition:.22s;cursor:pointer;}
+.museum-card:hover{transform:translateY(-3px);box-shadow:0 20px 48px rgba(47,36,29,.12);border-color:#bfae96;}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:0;}
+.badge-row{display:flex;gap:8px;flex-wrap:nowrap;justify-content:flex-end;align-items:center;flex:0 0 auto;white-space:nowrap;}
+.badge{display:inline-block;padding:6px 11px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap;}
+.badge.kind{background:#efe2d0;color:#6b5745;}
+.badge.free{background:#ece5da;color:#5d4f42;}
+.badge.paid{background:#2f241d;color:#fffaf3;}
+.museum-name{font-family:Georgia,serif;font-size:25px;line-height:1.25;margin-bottom:12px;letter-spacing:-.3px;word-break:keep-all;overflow-wrap:anywhere;}
+.museum-region{font-size:15px;color:#786756;margin-bottom:0;}
+.info-list{display:grid;gap:10px;margin-bottom:18px;}
+.info-item{display:grid;grid-template-columns:82px 1fr;gap:10px;font-size:15px;}
+.info-item strong{color:#2f241d;}
+.info-item span{color:#645648;line-height:1.5;word-break:keep-all;}
+.card-footer{margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.site-btn{display:inline-block;padding-bottom:4px;border-bottom:1px solid #2f241d;font-size:15px;font-weight:700;transition:.2s;}
+.site-btn:hover{color:#8d755d;border-color:#8d755d;transform:translateX(3px);}
+.empty-state{display:none;background:#fffaf3;border:1px solid #dccdb8;border-radius:24px;padding:46px;text-align:center;color:#6a5a4d;font-size:17px;}
+
+.feedback-section{margin-top:100px;padding-top:76px;border-top:1px solid #ded0bc;}
+.feedback-card{background:#2f241d;color:#fffaf3;border-radius:30px;padding:46px;display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;box-shadow:0 24px 60px rgba(47,36,29,.18);}
+.feedback-label{display:inline-block;margin-bottom:14px;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#d8c2a3;}
+.feedback-copy h2{font-family:Georgia,serif;font-size:42px;line-height:1.15;margin-bottom:18px;letter-spacing:-1px;}
+.feedback-copy p{font-size:17px;line-height:1.8;color:rgba(255,250,243,.78);}
+.feedback-form{background:rgba(255,250,243,.08);border:1px solid rgba(255,250,243,.16);border-radius:22px;padding:28px;}
+.field{margin-bottom:20px;}
+.field label{display:block;margin-bottom:9px;font-size:14px;color:rgba(255,250,243,.84);}
+.field input,.field textarea{width:100%;padding:14px 15px;border:1px solid rgba(255,250,243,.22);border-radius:14px;background:rgba(255,250,243,.08);color:#fffaf3;font-size:15px;outline:none;font-family:inherit;}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,250,243,.46);}
+.field textarea{resize:vertical;min-height:120px;line-height:1.6;}
+.submit-btn{width:100%;padding:14px 20px;border:none;border-radius:999px;background:#fffaf3;color:#2f241d;font-size:15px;font-weight:700;cursor:pointer;transition:.2s;}
+.submit-btn:hover{background:#ead8bf;transform:translateY(-1px);}
+
+
+.result-search-input{margin-top:12px;width:420px;max-width:100%;padding:14px 16px;border:1px solid #d5c4ad;border-radius:16px;background:#fffaf3;font-size:15px;outline:none;color:#2f241d;}
+.result-search-input:focus{border-color:#9e876a;background:#fff;}
+.result-count-text{font-size:15px;color:#645648;}
+.result-count-text strong{font-size:22px;color:#2f241d;}
+.results-panel{height:76vh;overflow-y:auto;padding-right:12px;scrollbar-width:thin;scrollbar-color:#bfae96 transparent;}
+.results-panel::-webkit-scrollbar{width:8px;}
+.results-panel::-webkit-scrollbar-thumb{background:#bfae96;border-radius:999px;}
+.results-panel::-webkit-scrollbar-track{background:transparent;}
+.content-top{position:sticky;top:0;z-index:3;background:linear-gradient(#f4eee3 0%,#f4eee3 78%,rgba(244,238,227,0) 100%);padding-bottom:20px;}
+.card-grid{padding-bottom:10px;}
+.filter-panel{top:104px;}
+
+
+/* 상세 정보 모달 */
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    z-index:300;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(26,20,16,.58);
+    backdrop-filter:blur(8px);
+}
+
+.modal-overlay.active{
+    display:flex;
+}
+
+.modal-card{
+    width:760px;
+    max-height:82vh;
+    overflow-y:auto;
+    background:#fffaf3;
+    border:1px solid #dccdb8;
+    border-radius:30px;
+    padding:38px;
+    box-shadow:0 30px 90px rgba(0,0,0,.28);
+    position:relative;
+}
+
+.modal-close{
+    position:absolute;
+    top:22px;
+    right:22px;
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:#2f241d;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.modal-labels{
+    display:flex;
+    gap:8px;
+    margin-bottom:18px;
+}
+
+.modal-title{
+    font-family:Georgia,serif;
+    font-size:42px;
+    line-height:1.15;
+    margin-bottom:8px;
+    letter-spacing:-.6px;
+}
+
+.modal-sub{
+    font-size:16px;
+    color:#786756;
+    margin-bottom:26px;
+}
+
+.modal-info{
+    display:grid;
+    gap:14px;
+    margin-bottom:28px;
+    padding-top:22px;
+    border-top:1px solid #e3d6c4;
+}
+
+.modal-info-row{
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:14px;
+    font-size:16px;
+}
+
+.modal-info-row strong{
+    color:#2f241d;
+}
+
+.modal-info-row span{
+    color:#5f5043;
+    line-height:1.6;
+}
+
+.modal-site-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px 24px;
+    border-radius:999px;
+    background:#2f241d;
+    color:#fffaf3;
+    font-size:16px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.modal-site-btn:hover{
+    background:#4c3d31;
+    transform:translateY(-1px);
+}
+
+.card-hint{
+    margin-top:18px;
+    font-size:13px;
+    color:#8b7359;
+}
+
+
+/* 국립 / 공립 색상 구분 */
+.badge.kind.national{
+    background:#2f241d;
+    color:#fffaf3;
+}
+
+.badge.kind.public{
+    background:#b88746;
+    color:#fffaf3;
+}
+
+.modal-labels .badge.kind.national{
+    background:#2f241d;
+    color:#fffaf3;
+}
+
+.modal-labels .badge.kind.public{
+    background:#b88746;
+    color:#fffaf3;
+}
+
+
+.badge-row{display:flex;gap:8px;flex-wrap:nowrap;justify-content:flex-end;align-items:center;flex:0 0 auto;white-space:nowrap;}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:0;}
+.card-head > div:first-child{flex:1 1 auto;min-width:0;}
+.museum-name{font-family:Georgia,serif;font-size:25px;line-height:1.25;margin-bottom:12px;letter-spacing:-.3px;word-break:keep-all;overflow-wrap:anywhere;}
+.badge-row{display:flex;gap:8px;flex-wrap:nowrap;justify-content:flex-end;align-items:center;flex:0 0 auto;white-space:nowrap;}
+.badge.fee-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:42px;
+    height:42px;
+    padding:0;
+    border-radius:12px;
+    position:relative;
+}
+.badge.fee-badge img{
+    width:24px;
+    height:24px;
+    display:block;
+    object-fit:contain;
+    flex:0 0 auto;
+}
+.badge.fee-badge span{display:none;}
+.badge.fee-badge.paid{
+    background:#e9f5e3;
+    border:1px solid #cfe2c7;
+}
+.badge.fee-badge.free{
+    background:#f7f2e8;
+    border:1px solid #ddd2c0;
+}
+.modal-labels .badge.fee-badge{
+    width:46px;
+    height:46px;
+    border-radius:13px;
+}
+.modal-labels{display:flex;gap:8px;margin-bottom:18px;flex-wrap:nowrap;align-items:center;}
+
+
+.benefit-slider{
+    width:100%;
+    max-width:650px;
+    aspect-ratio:21/9;
+    border-radius:28px;
+    overflow:hidden;
+    position:relative;
+    border:1px solid #dccdb8;
+    box-shadow:0 16px 38px rgba(47,36,29,.10);
+    background:#fffaf3;
+    justify-self:end;
+}
+
+.benefit-track{
+    width:100%;
+    height:100%;
+    display:flex;
+    transition:transform .65s ease;
+}
+
+.benefit-slide{
+    flex:0 0 100%;
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+.benefit-slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.benefit-dots{
+    position:absolute;
+    left:50%;
+    bottom:14px;
+    transform:translateX(-50%);
+    display:flex;
+    gap:8px;
+    padding:7px 10px;
+    border-radius:999px;
+    background:rgba(47,36,29,.24);
+    backdrop-filter:blur(6px);
+}
+
+.benefit-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:rgba(255,250,243,.48);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.benefit-dot.active{
+    width:22px;
+    border-radius:999px;
+    background:#fffaf3;
+}
+
+.brand{
+    cursor:pointer;
+}
+
+
+.modal-labels{
+    display:flex;
+    gap:8px;
+    margin-bottom:18px;
+    align-items:center;
+}
+
+.modal-labels .fee-badge{
+    cursor:pointer;
+}
+
+.modal-labels .fee-badge:hover{
+    transform:translateY(-1px);
+    box-shadow:0 8px 18px rgba(47,36,29,.13);
+}
+
+.modal-review{
+    display:none;
+    margin:28px 0;
+    padding:24px;
+    border:1px solid #e3d6c4;
+    border-radius:24px;
+    background:#f8f1e7;
+}
+
+.modal-review.active{
+    display:block;
+}
+
+.review-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:18px;
+    margin-bottom:8px;
+}
+
+.review-head span{
+    display:block;
+    margin-bottom:6px;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:#8b7359;
+}
+
+.review-head h3{
+    font-size:24px;
+    color:#2f241d;
+}
+
+.review-close-btn{
+    border:none;
+    background:#2f241d;
+    color:#fffaf3;
+    border-radius:999px;
+    padding:8px 14px;
+    font-size:13px;
+    cursor:pointer;
+}
+
+.review-desc{
+    margin-bottom:18px;
+    color:#6a594a;
+    font-size:15px;
+    line-height:1.6;
+}
+
+.review-list{
+    display:grid;
+    gap:12px;
+}
+
+.review-item{
+    display:grid;
+    grid-template-columns:130px 1fr auto;
+    gap:14px;
+    align-items:center;
+    padding:14px;
+    border:1px solid #e0d1bd;
+    border-radius:18px;
+    background:#fffaf3;
+}
+
+.review-name{
+    font-weight:700;
+    color:#2f241d;
+}
+
+.review-score{
+    height:9px;
+    border-radius:999px;
+    background:#e6d8c5;
+    overflow:hidden;
+}
+
+.review-score-bar{
+    height:100%;
+    width:50%;
+    border-radius:999px;
+    background:#8b7359;
+    transition:.2s;
+}
+
+.review-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.review-actions button{
+    width:34px;
+    height:34px;
+    border:1px solid #d5c4ad;
+    border-radius:50%;
+    background:#fffaf3;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.review-actions button:hover{
+    background:#efe2d0;
+}
+
+.review-actions strong{
+    min-width:38px;
+    text-align:right;
+    font-size:16px;
+    color:#2f241d;
+}
+
+
+/* 탐색 페이지 구역 테두리 강화 */
+.heading{
+    border:1px solid #dccdb8;
+    border-radius:30px;
+    padding:34px;
+    background:rgba(255,250,243,.58);
+    box-shadow:0 14px 34px rgba(47,36,29,.06);
+}
+
+.layout{
+    border:1px solid #dccdb8;
+    border-radius:30px;
+    padding:28px;
+    background:rgba(255,250,243,.36);
+    box-shadow:0 16px 42px rgba(47,36,29,.06);
+}
+
+.filter-panel{
+    border:1px solid #cdbb9f;
+}
+
+.results-panel{
+    border:1px solid #dccdb8;
+    border-radius:26px;
+    padding:22px;
+    background:rgba(255,250,243,.52);
+}
+
+/* 상세 모달 2페이지 구조 */
+.modal-card{
+    width:920px;
+    max-width:92vw;
+    overflow:hidden;
+}
+
+.modal-pages{
+    width:200%;
+    display:flex;
+    transition:transform .42s ease;
+}
+
+.modal-pages.show-review{
+    transform:translateX(-50%);
+}
+
+.modal-page{
+    width:50%;
+    flex:0 0 50%;
+    padding-right:6px;
+}
+
+.modal-page-review{
+    padding-left:22px;
+}
+
+.modal-page-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:46px;
+    height:46px;
+    border:none;
+    border-radius:50%;
+    background:#2f241d;
+    color:#fffaf3;
+    font-size:32px;
+    line-height:1;
+    cursor:pointer;
+    box-shadow:0 12px 26px rgba(47,36,29,.20);
+    transition:.2s;
+    z-index:4;
+}
+
+.modal-page-btn:hover{
+    background:#4c3d31;
+    transform:translateY(-50%) scale(1.04);
+}
+
+.modal-page-btn.next{
+    right:28px;
+}
+
+.modal-page-btn.prev{
+    left:28px;
+    display:none;
+}
+
+.modal-card.review-mode .modal-page-btn.next{
+    display:none;
+}
+
+.modal-card.review-mode .modal-page-btn.prev{
+    display:block;
+}
+
+.modal-page-indicator{
+    position:absolute;
+    right:38px;
+    bottom:28px;
+    font-size:14px;
+    color:#8b7359;
+    font-weight:700;
+}
+
+.modal-review{
+    display:block;
+}
+
+.review-head{
+    margin-bottom:10px;
+}
+
+.review-head span{
+    display:block;
+    margin-bottom:8px;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:#8b7359;
+}
+
+.review-head h3{
+    font-family:Georgia,serif;
+    font-size:34px;
+    color:#2f241d;
+}
+
+.review-desc{
+    margin-bottom:24px;
+    color:#6a594a;
+    font-size:16px;
+    line-height:1.65;
+}
+
+.review-list{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:16px;
+}
+
+.review-item{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    min-height:150px;
+    padding:20px;
+    border:1px solid #e0d1bd;
+    border-radius:22px;
+    background:#fffaf3;
+}
+
+.review-name{
+    font-size:18px;
+    font-weight:800;
+    color:#2f241d;
+}
+
+.review-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.review-actions button{
+    width:38px;
+    height:38px;
+    border:1px solid #d5c4ad;
+    border-radius:50%;
+    background:#fffaf3;
+    cursor:pointer;
+    font-size:17px;
+}
+
+.review-actions button:hover{
+    background:#efe2d0;
+}
+
+.review-actions strong{
+    margin-left:auto;
+    min-width:54px;
+    text-align:right;
+    font-size:28px;
+    line-height:1;
+    color:#2f241d;
+}
+
+.review-score,
+.review-score-bar{
+    display:none;
+}
+
+.modal-labels .fee-badge{
+    cursor:default;
+}
+
+.modal-labels .fee-badge:hover{
+    transform:none;
+    box-shadow:none;
+}
+
+
+/* 검색창이 카드 목록을 가리는 문제 수정 */
+.results-panel{
+    overflow-y:auto;
+}
+
+.results-panel .content-top,
+.results-panel .results-top,
+.content-top{
+    position:static !important;
+    top:auto !important;
+    background:transparent !important;
+    padding-bottom:22px !important;
+    margin-bottom:0 !important;
+}
+
+/* 상세 모달 페이지 넘김 레이아웃 수정 */
+.modal-card{
+    width:880px !important;
+    max-width:90vw !important;
+    max-height:84vh !important;
+    overflow:hidden !important;
+    padding:42px 72px 78px 72px !important;
+}
+
+.modal-pages{
+    width:200% !important;
+    display:flex !important;
+    transition:transform .42s ease !important;
+    overflow:visible !important;
+}
+
+.modal-pages.show-review{
+    transform:translateX(-50%) !important;
+}
+
+.modal-page{
+    flex:0 0 50% !important;
+    width:50% !important;
+    max-width:50% !important;
+    box-sizing:border-box !important;
+    overflow:hidden !important;
+    padding:0 !important;
+}
+
+.modal-page-info{
+    padding-right:0 !important;
+}
+
+.modal-page-review{
+    padding-left:42px !important;
+    padding-right:8px !important;
+}
+
+/* 화살표가 글자를 가리지 않도록 하단으로 이동 */
+.modal-page-btn{
+    top:auto !important;
+    bottom:24px !important;
+    transform:none !important;
+    width:44px !important;
+    height:44px !important;
+    font-size:30px !important;
+    z-index:10 !important;
+}
+
+.modal-page-btn:hover{
+    transform:scale(1.04) !important;
+}
+
+.modal-page-btn.next{
+    right:72px !important;
+}
+
+.modal-page-btn.prev{
+    left:72px !important;
+}
+
+/* 페이지 표시 위치 조정 */
+.modal-page-indicator{
+    right:auto !important;
+    left:50% !important;
+    bottom:34px !important;
+    transform:translateX(-50%) !important;
+}
+
+/* 리뷰가 아래로 밀리지 않도록 상단 정렬 */
+.modal-page-review .review-head{
+    margin-top:0 !important;
+}
+
+.modal-page-review .review-head h3{
+    font-size:38px !important;
+    line-height:1.15 !important;
+    margin-bottom:12px !important;
+}
+
+.modal-page-review .review-desc{
+    margin-bottom:28px !important;
+}
+
+.review-list{
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:16px !important;
+}
+
+.review-item{
+    min-height:136px !important;
+    justify-content:center !important;
+}
+
+.review-actions strong{
+    font-size:30px !important;
+}
+
+/* 상세정보가 너무 왼쪽으로 붙지 않게 */
+.modal-info{
+    margin-bottom:26px !important;
+}
+
+
+/* 최종 수정: 검색창은 필터 영역, 결과 상단은 고정 해제 */
+.search-input{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid #d5c4ad;
+    border-radius:15px;
+    background:#fdf9f3;
+    font-size:15px;
+    outline:none;
+    color:#2f241d;
+}
+
+.search-input:focus{
+    border-color:#9e876a;
+    background:#fff;
+}
+
+.content-top{
+    position:static !important;
+    top:auto !important;
+    display:flex !important;
+    justify-content:space-between !important;
+    align-items:center !important;
+    padding:0 0 18px 0 !important;
+    margin:0 0 18px 0 !important;
+    border-bottom:1px solid #dccdb8 !important;
+    background:transparent !important;
+}
+
+/* 상세 모달 최종 수정: 옆 페이지가 보이지 않도록 슬라이드 대신 표시 전환 */
+.modal-card{
+    width:820px !important;
+    max-width:90vw !important;
+    max-height:84vh !important;
+    overflow-y:auto !important;
+    padding:42px 64px 78px 64px !important;
+}
+
+.modal-pages{
+    width:100% !important;
+    display:block !important;
+    transform:none !important;
+    transition:none !important;
+    overflow:hidden !important;
+}
+
+.modal-pages.show-review{
+    transform:none !important;
+}
+
+.modal-page{
+    width:100% !important;
+    max-width:100% !important;
+    flex:none !important;
+    padding:0 !important;
+    box-sizing:border-box !important;
+}
+
+.modal-page-info{
+    display:block !important;
+}
+
+.modal-page-review{
+    display:none !important;
+    padding:0 !important;
+}
+
+.modal-card.review-mode .modal-page-info{
+    display:none !important;
+}
+
+.modal-card.review-mode .modal-page-review{
+    display:block !important;
+}
+
+/* 화살표는 하단에 두고 내용과 겹치지 않게 */
+.modal-page-btn{
+    position:absolute !important;
+    top:auto !important;
+    bottom:24px !important;
+    transform:none !important;
+    width:44px !important;
+    height:44px !important;
+    z-index:10 !important;
+}
+
+.modal-page-btn.next{
+    right:64px !important;
+}
+
+.modal-page-btn.prev{
+    left:64px !important;
+}
+
+.modal-page-btn:hover{
+    transform:scale(1.04) !important;
+}
+
+.modal-page-indicator{
+    position:absolute !important;
+    left:50% !important;
+    right:auto !important;
+    bottom:35px !important;
+    transform:translateX(-50%) !important;
+}
+
+/* 리뷰 페이지를 위쪽부터 보이게 */
+.modal-page-review{
+    padding-top:0 !important;
+}
+
+.review-head{
+    margin-top:0 !important;
+    margin-bottom:12px !important;
+}
+
+.review-head h3{
+    font-family:Georgia,serif !important;
+    font-size:38px !important;
+    line-height:1.15 !important;
+    margin:0 0 8px 0 !important;
+}
+
+.review-desc{
+    margin-bottom:24px !important;
+}
+
+.review-list{
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:16px !important;
+}
+
+.review-item{
+    min-height:130px !important;
+    padding:20px !important;
+    justify-content:center !important;
+}
+
+.review-score,
+.review-score-bar{
+    display:none !important;
+}
+
+.review-actions strong{
+    font-size:30px !important;
+}
+
+
+/* 모달 반응형/페이지 표시 최종 보정 */
+.modal-card{
+    position:relative !important;
+    width:min(820px, 88vw) !important;
+    max-height:82vh !important;
+    overflow:hidden !important;
+    padding:clamp(28px, 3vw, 42px) clamp(34px, 5vw, 64px) 86px clamp(34px, 5vw, 64px) !important;
+}
+
+.modal-pages{
+    width:100% !important;
+    display:block !important;
+    overflow:hidden !important;
+    transform:none !important;
+    transition:none !important;
+}
+
+.modal-page{
+    width:100% !important;
+    max-width:100% !important;
+    max-height:calc(82vh - 180px) !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+    padding:0 6px 4px 0 !important;
+    box-sizing:border-box !important;
+}
+
+.modal-page::-webkit-scrollbar{
+    width:7px;
+}
+
+.modal-page::-webkit-scrollbar-thumb{
+    background:#c8b79f;
+    border-radius:999px;
+}
+
+.modal-page-info{
+    display:block !important;
+}
+
+.modal-page-review{
+    display:none !important;
+}
+
+.modal-card.review-mode .modal-page-info{
+    display:none !important;
+}
+
+.modal-card.review-mode .modal-page-review{
+    display:block !important;
+}
+
+/* 1 / 2, 2 / 2는 항상 모달 아래쪽 고정 */
+.modal-page-indicator{
+    position:absolute !important;
+    left:50% !important;
+    right:auto !important;
+    bottom:31px !important;
+    transform:translateX(-50%) !important;
+    z-index:20 !important;
+    padding:5px 12px !important;
+    border-radius:999px !important;
+    background:#fffaf3 !important;
+    border:1px solid #dccdb8 !important;
+    color:#7b6754 !important;
+    font-size:14px !important;
+    font-weight:800 !important;
+    line-height:1 !important;
+}
+
+/* 화살표도 하단에 고정 */
+.modal-page-btn{
+    position:absolute !important;
+    top:auto !important;
+    bottom:20px !important;
+    transform:none !important;
+    width:46px !important;
+    height:46px !important;
+    z-index:21 !important;
+}
+
+.modal-page-btn:hover{
+    transform:scale(1.04) !important;
+}
+
+.modal-page-btn.next{
+    right:clamp(28px, 5vw, 64px) !important;
+}
+
+.modal-page-btn.prev{
+    left:clamp(28px, 5vw, 64px) !important;
+}
+
+/* 작은 화면에서 모달 안쪽 여백과 글자 크기 보정 */
+@media (max-width: 1100px){
+    .modal-card{
+        width:90vw !important;
+        padding:30px 38px 82px 38px !important;
+    }
+
+    .modal-title{
+        font-size:34px !important;
+        line-height:1.18 !important;
+    }
+
+    .modal-info-row{
+        grid-template-columns:82px 1fr !important;
+        gap:12px !important;
+        font-size:15px !important;
+    }
+
+    .review-list{
+        grid-template-columns:1fr !important;
+        gap:12px !important;
+    }
+
+    .review-item{
+        min-height:112px !important;
+        padding:18px !important;
+    }
+
+    .review-head h3{
+        font-size:32px !important;
+    }
+}
+
+@media (max-height: 760px){
+    .modal-card{
+        max-height:88vh !important;
+        padding-top:26px !important;
+        padding-bottom:78px !important;
+    }
+
+    .modal-page{
+        max-height:calc(88vh - 150px) !important;
+    }
+
+    .modal-title{
+        font-size:32px !important;
+    }
+
+    .modal-info{
+        gap:10px !important;
+    }
+
+    .review-item{
+        min-height:96px !important;
+    }
+}
+
+/* 검색/필터/결과 영역 축소 시 어색함 완화 */
+@media (max-width: 1200px){
+    .layout{
+        grid-template-columns:260px 1fr !important;
+        gap:24px !important;
+        padding:22px !important;
+    }
+
+    .card-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+        gap:16px !important;
+    }
+
+    .museum-name{
+        font-size:22px !important;
+    }
+}
+
+
+/* 화면 축소 시 배너/통계/필터 정리 */
+@media (max-width: 1180px){
+    .benefit-slider{
+        display:none !important;
+    }
+
+    .heading{
+        grid-template-columns:1fr !important;
+    }
+
+    .hero-stats{
+        display:none !important;
+    }
+}
+
+/* 좁은 화면에서는 필터를 먼저 숨기고 결과 박스는 유지 */
+@media (max-width: 1050px){
+    .layout{
+        grid-template-columns:1fr !important;
+        padding:24px !important;
+    }
+
+    .filter-panel{
+        display:none !important;
+    }
+
+    .results-panel{
+        height:76vh !important;
+        width:100% !important;
+    }
+
+    .card-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+/* 더 좁아지면 카드만 1열로 */
+@media (max-width: 760px){
+    .card-grid{
+        grid-template-columns:1fr !important;
+    }
+
+    .results-panel{
+        height:78vh !important;
+        padding:18px !important;
+    }
+
+    .museum-card{
+        min-height:135px !important;
+    }
+}
+
+/* 지도 인트로 텍스트도 화면 축소 시 과하게 막지 않도록 */
+@media (max-width: 900px){
+    .hero-comment{
+        left:40px !important;
+        bottom:120px !important;
+        max-width:560px !important;
+    }
+
+    .hero-comment h1{
+        font-size:46px !important;
+    }
+
+    .hero-comment p{
+        font-size:16px !important;
+    }
+
+    .hero-scroll{
+        left:40px !important;
+        bottom:60px !important;
+    }
+}
+
+
+/* Browse Museums 큰 소개 박스 제거 */
+.heading{
+    display:none !important;
+}
+
+/* heading 제거 후 탐색 박스가 너무 아래로 밀리지 않게 */
+.page{
+    padding-top:48px !important;
+}
+
+
+/* 의도적인 불완전함: 너무 반듯하지 않은 안내 구역 */
+.heading{
+    display:grid !important;
+}
+
+.benefit-heading{
+    position:relative;
+    grid-template-columns:.82fr 1.18fr !important;
+    align-items:center !important;
+    gap:42px !important;
+    padding:34px 36px 36px !important;
+    border:1px solid #d8c7ad !important;
+    border-radius:34px 28px 38px 26px !important;
+    background:
+        radial-gradient(circle at 92% 12%, rgba(139,115,89,.08) 0 58px, transparent 60px),
+        linear-gradient(102deg, rgba(255,250,243,.92), rgba(250,241,226,.70)) !important;
+    box-shadow:0 16px 42px rgba(47,36,29,.07) !important;
+    overflow:visible !important;
+}
+
+.benefit-heading::before{
+    content:"";
+    position:absolute;
+    left:34px;
+    top:28px;
+    width:86px;
+    height:5px;
+    border-radius:999px;
+    background:#b88746;
+    transform:rotate(-2deg);
+    opacity:.85;
+}
+
+.benefit-heading::after{
+    content:"visit note";
+    position:absolute;
+    right:34px;
+    top:-13px;
+    padding:6px 12px;
+    border:1px solid #d8c7ad;
+    border-radius:999px;
+    background:#fffaf3;
+    color:#8b7359;
+    font-size:12px;
+    letter-spacing:1px;
+    transform:rotate(2deg);
+}
+
+.benefit-copy{
+    transform:rotate(-.35deg);
+}
+
+.benefit-copy .small{
+    margin-top:8px;
+}
+
+.benefit-copy h1{
+    font-family:Georgia,serif;
+    font-size:clamp(38px, 3.4vw, 56px);
+    line-height:1.08;
+    letter-spacing:-1.2px;
+    margin-bottom:18px;
+    color:#2f241d;
+}
+
+.human-copy{
+    max-width:520px;
+    font-size:17px;
+    line-height:1.8;
+    color:#6b5b4e;
+    word-break:keep-all;
+}
+
+.benefit-slider{
+    display:block !important;
+    transform:rotate(.45deg);
+    border-radius:26px 34px 24px 32px !important;
+    box-shadow:0 18px 46px rgba(47,36,29,.12) !important;
+}
+
+.benefit-slider:hover{
+    transform:rotate(.45deg) translateY(-2px);
+}
+
+/* 카드도 아주 약하게 손맛만 주기 */
+.museum-card:nth-child(4n+1){
+    border-radius:22px 26px 20px 24px;
+}
+
+.museum-card:nth-child(4n+2){
+    border-radius:26px 21px 25px 20px;
+}
+
+.museum-card:nth-child(5n){
+    transform:translateY(1px);
+}
+
+.museum-card:nth-child(5n):hover{
+    transform:translateY(-3px);
+}
+
+/* 예전 수정에서 배너가 너무 일찍 사라지는 것 보정 */
+@media (max-width: 1180px){
+    .benefit-slider{
+        display:block !important;
+    }
+
+    .benefit-heading{
+        grid-template-columns:1fr !important;
+    }
+}
+
+/* 정말 좁아질 때만 배너 숨김 */
+@media (max-width: 900px){
+    .benefit-slider{
+        display:none !important;
+    }
+
+    .benefit-heading{
+        padding:30px !important;
+    }
+}
+
+
+/* 지도 핀 드롭 애니메이션 */
+.map-pin-layer{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+}
+
+.map-pin{
+    position:absolute;
+    width:17px;
+    height:17px;
+    border-radius:50% 50% 50% 0;
+    background:#8b5f31;
+    border:3px solid #fffaf3;
+    box-shadow:0 8px 18px rgba(47,36,29,.22);
+    transform:translateY(-34px) rotate(-45deg) scale(.5);
+    opacity:0;
+    animation:pinDrop .8s cubic-bezier(.2,.9,.26,1.2) forwards;
+}
+
+.map-pin::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#fffaf3;
+    transform:translate(-50%,-50%);
+}
+
+.map-pin::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:34px;
+    height:34px;
+    border:1px solid rgba(139,95,49,.38);
+    border-radius:50%;
+    transform:translate(-50%,-50%) rotate(45deg) scale(.2);
+    opacity:0;
+    animation:pinPulse 1.6s ease-out forwards;
+    animation-delay:inherit;
+}
+
+.map-pin.p1{left:49%;top:33%;animation-delay:.25s;}
+.map-pin.p2{left:58%;top:40%;animation-delay:.42s;}
+.map-pin.p3{left:52%;top:50%;animation-delay:.60s;}
+.map-pin.p4{left:64%;top:58%;animation-delay:.78s;}
+.map-pin.p5{left:47%;top:63%;animation-delay:.96s;}
+.map-pin.p6{left:42%;top:82%;animation-delay:1.14s;}
+
+@keyframes pinDrop{
+    0%{opacity:0;transform:translateY(-34px) rotate(-45deg) scale(.5);}
+    70%{opacity:1;transform:translateY(4px) rotate(-45deg) scale(1.08);}
+    100%{opacity:1;transform:translateY(0) rotate(-45deg) scale(1);}
+}
+
+@keyframes pinPulse{
+    0%{opacity:.6;transform:translate(-50%,-50%) rotate(45deg) scale(.15);}
+    100%{opacity:0;transform:translate(-50%,-50%) rotate(45deg) scale(1.35);}
+}
+
+/* 리뷰 안내 말풍선 */
+.review-bubble{
+    position:absolute;
+    right:124px;
+    bottom:24px;
+    z-index:20;
+    width:270px;
+    padding:15px 18px;
+    border:1px solid #dccdb8;
+    border-radius:20px 20px 8px 20px;
+    background:rgba(255,250,243,.92);
+    color:#2f241d;
+    box-shadow:0 14px 32px rgba(47,36,29,.12);
+    transform:rotate(-.7deg);
+}
+
+.review-bubble::after{
+    content:"";
+    position:absolute;
+    right:-9px;
+    bottom:18px;
+    width:18px;
+    height:18px;
+    background:rgba(255,250,243,.92);
+    border-right:1px solid #dccdb8;
+    border-bottom:1px solid #dccdb8;
+    transform:rotate(-45deg);
+}
+
+.review-bubble strong{
+    display:block;
+    margin-bottom:5px;
+    font-size:15px;
+}
+
+.review-bubble span{
+    display:block;
+    color:#6b5b4e;
+    font-size:13px;
+    line-height:1.55;
+    word-break:keep-all;
+}
+
+.modal-card.review-mode .review-bubble{
+    display:none;
+}
+
+/* 화살표 투명화 */
+.modal-page-btn{
+    background:rgba(47,36,29,.12) !important;
+    color:#2f241d !important;
+    border:1px solid rgba(47,36,29,.16) !important;
+    box-shadow:none !important;
+    backdrop-filter:blur(6px);
+}
+
+.modal-page-btn:hover{
+    background:rgba(47,36,29,.78) !important;
+    color:#fffaf3 !important;
+    border-color:rgba(47,36,29,.78) !important;
+}
+
+/* 말풍선이 작은 화면에서 거슬리면 숨김 */
+@media (max-width: 980px), (max-height: 720px){
+    .review-bubble{
+        display:none !important;
+    }
+}
+
+/* 지도 핀은 좁은 화면에서 너무 튀면 숨김 */
+@media (max-width: 900px){
+    .map-pin-layer{
+        display:none !important;
+    }
+}
+
+
+/* 지도 확대 애니메이션 제거 + 핀 위치/낙하감 조정 */
+.hero-map{
+    animation:none !important;
+    transform:none !important;
+}
+
+.map-pin{
+    transform:translateY(-95px) rotate(-45deg) scale(.45) !important;
+    animation:pinDropLong .9s cubic-bezier(.2,.95,.26,1.25) forwards !important;
+}
+
+.map-pin.p1{left:50.5% !important;top:34% !important;animation-delay:.18s !important;}  /* 수도권 */
+.map-pin.p2{left:58.5% !important;top:31% !important;animation-delay:.36s !important;}  /* 강원 */
+.map-pin.p3{left:51.5% !important;top:48% !important;animation-delay:.54s !important;}  /* 충청 */
+.map-pin.p4{left:60.5% !important;top:59% !important;animation-delay:.72s !important;}  /* 경상 */
+.map-pin.p5{left:47.8% !important;top:64% !important;animation-delay:.90s !important;}  /* 전라 */
+.map-pin.p6{left:45.2% !important;top:78% !important;animation-delay:1.08s !important;}  /* 제주 */
+
+@keyframes pinDropLong{
+    0%{
+        opacity:0;
+        transform:translateY(-95px) rotate(-45deg) scale(.45);
+    }
+    72%{
+        opacity:1;
+        transform:translateY(8px) rotate(-45deg) scale(1.1);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0) rotate(-45deg) scale(1);
+    }
+}
+
+/* 말풍선 위치 조정: 1/2 표시를 가리지 않고 2페이지 이동 방향을 가리킴 */
+.review-bubble{
+    right:128px !important;
+    top:52% !important;
+    bottom:auto !important;
+    width:300px !important;
+    transform:translateY(-50%) rotate(-.5deg) !important;
+    border-radius:22px 22px 10px 22px !important;
+}
+
+.review-bubble::after{
+    right:-10px !important;
+    bottom:50% !important;
+    top:auto !important;
+    transform:translateY(50%) rotate(-45deg) !important;
+}
+
+.modal-page-btn.next{
+    right:54px !important;
+}
+
+.modal-page-indicator{
+    bottom:31px !important;
+    left:50% !important;
+    transform:translateX(-50%) !important;
+}
+
+@media (max-width: 1200px), (max-height: 760px){
+    .review-bubble{
+        display:none !important;
+    }
+}
+
+
+/* 핀 크기 확대 + 지역 위치 재조정 */
+.map-pin{
+    width:27px !important;
+    height:27px !important;
+    border-width:4px !important;
+    box-shadow:0 10px 24px rgba(47,36,29,.26) !important;
+}
+
+.map-pin::after{
+    width:9px !important;
+    height:9px !important;
+}
+
+.map-pin::before{
+    width:54px !important;
+    height:54px !important;
+}
+
+/* 지도 이미지 기준 대략 위치: 수도권, 강원, 충청, 경상, 전라, 제주 */
+.map-pin.p1{left:50.5% !important;top:31.5% !important;animation-delay:.18s !important;}  /* 수도권 */
+.map-pin.p2{left:61.0% !important;top:31.0% !important;animation-delay:.36s !important;}  /* 강원 */
+.map-pin.p3{left:53.5% !important;top:48.5% !important;animation-delay:.54s !important;}  /* 충청 */
+.map-pin.p4{left:61.0% !important;top:58.5% !important;animation-delay:.72s !important;}  /* 경상 */
+.map-pin.p5{left:49.0% !important;top:64.5% !important;animation-delay:.90s !important;}  /* 전라 */
+.map-pin.p6{left:45.8% !important;top:84.5% !important;animation-delay:1.08s !important;}  /* 제주 */
+
+/* 말풍선: 페이지 오른쪽 끝자락에 붙이고 내용 가리지 않기 */
+.review-bubble{
+    right:86px !important;
+    top:52% !important;
+    bottom:auto !important;
+    width:285px !important;
+    transform:translateY(-50%) rotate(-.5deg) !important;
+    z-index:22 !important;
+}
+
+.review-bubble::after{
+    right:-9px !important;
+    bottom:50% !important;
+    transform:translateY(50%) rotate(-45deg) !important;
+}
+
+/* 오른쪽 화살표와 말풍선 간격 */
+.modal-page-btn.next{
+    right:30px !important;
+}
+
+/* 상세 정보 텍스트 영역이 말풍선과 겹치지 않게 오른쪽 여백 확보 */
+.modal-card:not(.review-mode) .modal-page-info{
+    padding-right:330px !important;
+}
+
+/* 화면이 좁으면 말풍선은 숨기고 상세 정보는 전체 폭 사용 */
+@media (max-width: 1250px), (max-height: 760px){
+    .review-bubble{
+        display:none !important;
+    }
+
+    .modal-card:not(.review-mode) .modal-page-info{
+        padding-right:0 !important;
+    }
+}
+
+/* 지도 핀은 지도 비율이 줄어들면 위치가 어색해지므로 숨김 */
+@media (max-width: 900px){
+    .map-pin-layer{
+        display:none !important;
+    }
+}
+
+
+/* 말풍선 위치 미세 조정: 더 오른쪽으로 */
+.review-bubble{
+    right:48px !important;
+    top:52% !important;
+    width:285px !important;
+}
+
+.review-bubble::after{
+    right:-9px !important;
+}
+
+/* 핀 위치 직접 수정용
+   left는 가로 위치, top은 세로 위치입니다.
+   숫자를 바꾸면 핀이 이동합니다.
+   예) left를 키우면 오른쪽, top을 키우면 아래쪽으로 이동합니다.
+*/
+.map-pin.p1{left:50.5% !important;top:31.5% !important;}  /* 수도권 */
+.map-pin.p2{left:61.0% !important;top:31.0% !important;}  /* 강원 */
+.map-pin.p3{left:53.5% !important;top:48.5% !important;}  /* 충청 */
+.map-pin.p4{left:61.0% !important;top:58.5% !important;}  /* 경상 */
+.map-pin.p5{left:49.0% !important;top:64.5% !important;}  /* 전라 */
+.map-pin.p6{left:45.8% !important;top:84.5% !important;}  /* 제주 */
+
+
+/* 기존 핀 대신 지도 구역 전체 장식 애니메이션 */
+.map-pin-layer{
+    display:none !important;
+}
+
+.hero-map{
+    animation:none !important;
+    transform:none !important;
+}
+
+.map-deco-layer{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.map-glow{
+    position:absolute;
+    width:92px;
+    height:92px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(184,135,70,.28) 0%, rgba(184,135,70,.12) 34%, transparent 70%);
+    filter:blur(.2px);
+    opacity:0;
+    animation:softPop 4.6s ease-in-out infinite;
+}
+
+.map-glow.g1{left:49%;top:33%;animation-delay:.1s;}
+.map-glow.g2{left:58%;top:52%;animation-delay:1.1s;}
+.map-glow.g3{left:44%;top:70%;animation-delay:2.1s;}
+
+.map-ring{
+    position:absolute;
+    width:42px;
+    height:42px;
+    border:2px solid rgba(139,95,49,.36);
+    border-radius:50%;
+    opacity:0;
+    animation:ringPulse 3.8s ease-out infinite;
+}
+
+.map-ring::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#8b5f31;
+    transform:translate(-50%,-50%);
+    box-shadow:0 7px 16px rgba(47,36,29,.20);
+}
+
+.map-ring.r1{left:51%;top:37%;animation-delay:.35s;}
+.map-ring.r2{left:60%;top:60%;animation-delay:1.25s;}
+.map-ring.r3{left:46%;top:78%;animation-delay:2.15s;}
+
+.map-line{
+    position:absolute;
+    height:2px;
+    width:150px;
+    border-radius:999px;
+    background:linear-gradient(90deg, transparent, rgba(139,95,49,.48), transparent);
+    opacity:0;
+    transform-origin:left center;
+    animation:lineTravel 4.8s ease-in-out infinite;
+}
+
+.map-line.l1{left:50%;top:42%;transform:rotate(23deg);animation-delay:.5s;}
+.map-line.l2{left:53%;top:54%;transform:rotate(-14deg);animation-delay:1.45s;}
+.map-line.l3{left:48%;top:67%;transform:rotate(35deg);animation-delay:2.4s;}
+
+.map-spark{
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#b88746;
+    opacity:0;
+    box-shadow:0 0 0 6px rgba(184,135,70,.11);
+    animation:sparkFloat 5.2s ease-in-out infinite;
+}
+
+.map-spark.s1{left:43%;top:38%;animation-delay:.2s;}
+.map-spark.s2{left:63%;top:43%;animation-delay:1.0s;}
+.map-spark.s3{left:55%;top:74%;animation-delay:1.8s;}
+.map-spark.s4{left:47%;top:58%;animation-delay:2.6s;}
+
+@keyframes softPop{
+    0%, 100%{opacity:0;transform:scale(.62);}
+    18%, 55%{opacity:1;transform:scale(1);}
+    80%{opacity:0;transform:scale(1.22);}
+}
+
+@keyframes ringPulse{
+    0%{opacity:0;transform:scale(.45);}
+    20%{opacity:1;transform:scale(.72);}
+    70%{opacity:.42;transform:scale(1.7);}
+    100%{opacity:0;transform:scale(2.05);}
+}
+
+@keyframes lineTravel{
+    0%,100%{opacity:0;clip-path:inset(0 100% 0 0);}
+    25%{opacity:.8;clip-path:inset(0 35% 0 0);}
+    55%{opacity:.45;clip-path:inset(0 0 0 35%);}
+    75%{opacity:0;clip-path:inset(0 0 0 100%);}
+}
+
+@keyframes sparkFloat{
+    0%,100%{opacity:0;transform:translateY(12px) scale(.6);}
+    30%{opacity:.9;transform:translateY(0) scale(1);}
+    65%{opacity:.45;transform:translateY(-12px) scale(.85);}
+}
+
+/* 말풍선 진짜 조금 더 오른쪽 */
+.review-bubble{
+    right:18px !important;
+}
+
+.review-bubble::after{
+    right:-10px !important;
+}
+
+.modal-page-btn.next{
+    right:24px !important;
+}
+
+@media (max-width: 900px){
+    .map-deco-layer{
+        display:none !important;
+    }
+}
+
+
+/* 말풍선 텍스트에 맞게 축소 */
+.review-bubble{
+    width:250px !important;
+    padding:16px 20px !important;
+    right:18px !important;
+}
+
+.review-bubble strong{
+    margin-bottom:0 !important;
+    font-size:16px !important;
+    line-height:1.45 !important;
+}
+
+.review-bubble span{
+    display:none !important;
+}
+
+/* 지도 애니메이션: 장식 효과 제거 후 미세 확대/축소 복구 */
+.map-deco-layer,
+.map-pin-layer{
+    display:none !important;
+}
+
+.hero-map{
+    animation:mapSlowZoomAgain 7s ease-in-out infinite alternate !important;
+    transform-origin:center center !important;
+}
+
+@keyframes mapSlowZoomAgain{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.055);
+    }
+}
+
+/* 화면이 작을 때는 지도 확대 효과도 꺼서 어색함 방지 */
+@media (max-width:900px){
+    .hero-map{
+        animation:none !important;
+        transform:none !important;
+    }
+}
+
+
+/* 1페이지 지도 인트로 텍스트: 살짝 왼쪽 위로 */
+.hero-comment{
+    left:48px !important;
+    bottom:190px !important;
+    max-width:720px !important;
+}
+
+.hero-comment h1{
+    line-height:1.08 !important;
+}
+
+.hero-scroll{
+    left:48px !important;
+    bottom:96px !important;
+}
+
+/* 배경에 대각선으로 빛이 들어오는 느낌 */
+.hero-section,
+.hero{
+    background:
+        linear-gradient(145deg, rgba(255,250,243,.98) 0%, rgba(242,235,221,.92) 42%, rgba(218,207,189,.72) 100%) !important;
+}
+
+.hero-section::after,
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.42) 0%, rgba(255,255,255,.14) 28%, transparent 56%),
+        radial-gradient(circle at 14% 16%, rgba(255,255,255,.38) 0 110px, transparent 260px);
+    mix-blend-mode:soft-light;
+}
+
+/* 말풍선: 기울기 제거, 그림자 제거, 페이지 끝자락에 정돈 */
+.review-bubble{
+    right:28px !important;
+    top:50% !important;
+    bottom:auto !important;
+    transform:translateY(-50%) !important;
+    width:250px !important;
+    padding:16px 20px !important;
+    border:1px solid #dccdb8 !important;
+    border-radius:20px !important;
+    background:#fffaf3 !important;
+    box-shadow:none !important;
+}
+
+.review-bubble::after{
+    right:-9px !important;
+    top:50% !important;
+    bottom:auto !important;
+    transform:translateY(-50%) rotate(-45deg) !important;
+    background:#fffaf3 !important;
+    box-shadow:none !important;
+}
+
+.review-bubble strong{
+    margin-bottom:0 !important;
+    font-size:16px !important;
+    line-height:1.45 !important;
+}
+
+.review-bubble span{
+    display:none !important;
+}
+
+/* 화살표를 말풍선 아래쪽으로 이동 */
+.modal-page-btn.next{
+    right:130px !important;
+    bottom:82px !important;
+    top:auto !important;
+}
+
+.modal-page-btn.prev{
+    bottom:28px !important;
+}
+
+/* 페이지 번호는 아래 중앙 유지 */
+.modal-page-indicator{
+    bottom:32px !important;
+    left:50% !important;
+    transform:translateX(-50%) !important;
+}
+
+/* 말풍선이 정보 텍스트를 가리지 않게 오른쪽 여백 확보 */
+.modal-card:not(.review-mode) .modal-page-info{
+    padding-right:300px !important;
+}
+
+@media (max-width:1250px), (max-height:760px){
+    .review-bubble{
+        display:none !important;
+    }
+    .modal-card:not(.review-mode) .modal-page-info{
+        padding-right:0 !important;
+    }
+    .modal-page-btn.next{
+        right:42px !important;
+        bottom:24px !important;
+    }
+}
+
+/* 화면 줄였을 때 인트로 텍스트 위치 보정 */
+@media (max-width:900px){
+    .hero-comment{
+        left:36px !important;
+        bottom:145px !important;
+    }
+    .hero-scroll{
+        left:36px !important;
+        bottom:70px !important;
+    }
+}
+
+
+/* 화살표 미세 조정: 1페이지 오른쪽 화살표 조금 더 오른쪽 */
+.modal-page-btn.next{
+    right:18px !important;
+    bottom:160px !important;
+    top:auto !important;
+}
+
+/* 2페이지 왼쪽 화살표도 1페이지 오른쪽 화살표와 대칭 위치 */
+.modal-page-btn.prev{
+    left:18px !important;
+    bottom:160px !important;
+    top:auto !important;
+}
+
+/* 지도 확대/축소 애니메이션 확실히 적용 */
+.hero-map{
+    animation:mapBreathZoom 6.5s ease-in-out infinite alternate !important;
+    transform-origin:center center !important;
+    will-change:transform !important;
+}
+
+@keyframes mapBreathZoom{
+    0%{
+        transform:scale(1) !important;
+    }
+    100%{
+        transform:scale(1.06) !important;
+    }
+}
+
+/* 혹시 남아있는 지도 장식/핀 효과는 끔 */
+.map-deco-layer,
+.map-pin-layer{
+    display:none !important;
+}
+
+/* 작은 화면에서는 지도 줌 끄기 */
+@media (max-width:900px){
+    .hero-map{
+        animation:none !important;
+        transform:none !important;
+    }
+}
+
+/* 작은 화면에서 화살표는 다시 하단으로 */
+@media (max-width:1250px), (max-height:760px){
+    .modal-page-btn.next{
+        right:42px !important;
+        bottom:24px !important;
+    }
+
+    .modal-page-btn.prev{
+        left:42px !important;
+        bottom:24px !important;
+    }
+}
+
+
+/* 최종: 지도 확대/축소 애니메이션 강제 적용 */
+.intro-hero{
+    overflow:hidden !important;
+}
+
+.intro-hero .hero-map{
+    left:-5% !important;
+    top:-5% !important;
+    width:110% !important;
+    height:110% !important;
+    max-width:none !important;
+    max-height:none !important;
+    padding:58px 132px 70px !important;
+    transform-origin:70% 50% !important;
+    animation:museumMapBreathing 5.8s ease-in-out infinite alternate !important;
+    will-change:transform !important;
+}
+
+@keyframes museumMapBreathing{
+    0%{
+        transform:scale(0.965);
+    }
+    100%{
+        transform:scale(1.055);
+    }
+}
+
+/* 돈 아이콘은 더 이상 페이지 넘김 버튼처럼 보이지 않게 */
+.modal-labels .fee-badge{
+    cursor:default !important;
+    pointer-events:none !important;
+}
+
+.modal-labels .fee-badge:hover{
+    transform:none !important;
+    box-shadow:none !important;
+}
+
+/* 작은 화면에서만 지도 움직임 끄기 */
+@media (max-width:720px){
+    .intro-hero .hero-map{
+        animation:none !important;
+        transform:none !important;
+        left:0 !important;
+        top:0 !important;
+        width:100% !important;
+        height:100% !important;
+    }
+}
+
+
+/* 상단 뮤지엄모아 로고 이미지 */
+.logo-brand{
+    display:flex !important;
+    align-items:center !important;
+    width:230px !important;
+    height:58px !important;
+    padding:0 !important;
+    border:none !important;
+}
+
+.logo-brand img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+    display:block !important;
+}
+
+/* 리뷰 설명 문구 제거 후 평가 항목을 위로 */
+.review-desc{
+    display:none !important;
+}
+
+.modal-page-review .review-head{
+    margin-bottom:22px !important;
+}
+
+.modal-page-review .review-head h3{
+    margin-bottom:0 !important;
+}
+
+.review-list{
+    margin-top:0 !important;
+    transform:translateY(-6px) !important;
+}
+
+/* 지도 줌인/줌아웃: explore_updated_182_v2 느낌으로 복구 */
+.intro-hero{
+    overflow:hidden !important;
+}
+
+.intro-hero .hero-map{
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    padding:56px 120px 64px !important;
+    opacity:.94 !important;
+    animation:mapZoomV2 8s ease-in-out infinite alternate !important;
+    transform-origin:center center !important;
+    will-change:transform !important;
+}
+
+@keyframes mapZoomV2{
+    0%{
+        transform:scale(1);
+    }
+    100%{
+        transform:scale(1.07);
+    }
+}
+
+/* 남아있는 장식/핀 효과는 끔 */
+.map-deco-layer,
+.map-pin-layer{
+    display:none !important;
+}
+
+/* 작은 화면 보정 */
+@media (max-width:900px){
+    .logo-brand{
+        width:180px !important;
+        height:48px !important;
+    }
+
+    .intro-hero .hero-map{
+        animation:none !important;
+        transform:none !important;
+        padding:40px 70px 54px !important;
+    }
+}
+
+
+/* 상단 로고를 헤더 틀에 맞게 정리 */
+.topbar,
+.header{
+    min-height:74px !important;
+}
+
+.logo-brand{
+    width:188px !important;
+    height:52px !important;
+    overflow:hidden !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    border:none !important;
+    background:transparent !important;
+}
+
+.logo-brand img{
+    width:235px !important;
+    height:auto !important;
+    max-width:none !important;
+    object-fit:contain !important;
+    display:block !important;
+    transform:translateX(-18px) scale(1.12) !important;
+    mix-blend-mode:multiply !important;
+}
+
+/* 지도 위 핀/장식 요소 완전 제거 */
+.map-pin-layer,
+.map-deco-layer,
+.map-pin,
+.map-glow,
+.map-ring,
+.map-line,
+.map-spark{
+    display:none !important;
+    visibility:hidden !important;
+    opacity:0 !important;
+}
+
+/* 지도 줌인/줌아웃 강제 적용 */
+.intro-hero{
+    position:relative !important;
+    overflow:hidden !important;
+}
+
+.intro-hero .hero-map{
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    max-height:none !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    padding:56px 120px 64px !important;
+    opacity:.94 !important;
+    transform-origin:center center !important;
+    animation:mapZoomFinal 7.5s ease-in-out infinite alternate !important;
+    will-change:transform !important;
+}
+
+@keyframes mapZoomFinal{
+    0%{
+        transform:scale(1);
+    }
+    100%{
+        transform:scale(1.075);
+    }
+}
+
+/* 리뷰 말풍선: 화살표가 중간에 있으므로 말풍선을 위로 이동 */
+.review-bubble{
+    right:34px !important;
+    top:42% !important;
+    bottom:auto !important;
+    transform:translateY(-50%) !important;
+    width:250px !important;
+    padding:16px 20px !important;
+    box-shadow:none !important;
+    border:1px solid #dccdb8 !important;
+    border-radius:20px !important;
+    background:#fffaf3 !important;
+}
+
+.review-bubble::after{
+    right:-9px !important;
+    top:50% !important;
+    bottom:auto !important;
+    transform:translateY(-50%) rotate(-45deg) !important;
+    background:#fffaf3 !important;
+    box-shadow:none !important;
+}
+
+.review-bubble strong{
+    font-size:16px !important;
+    line-height:1.45 !important;
+}
+
+.review-bubble span{
+    display:none !important;
+}
+
+/* 페이지 이동 화살표: 1페이지/2페이지 대칭, 중간 쪽 배치 */
+.modal-page-btn.next{
+    right:42px !important;
+    top:58% !important;
+    bottom:auto !important;
+    transform:translateY(-50%) !important;
+}
+
+.modal-page-btn.prev{
+    left:42px !important;
+    top:58% !important;
+    bottom:auto !important;
+    transform:translateY(-50%) !important;
+}
+
+.modal-page-btn:hover{
+    transform:translateY(-50%) scale(1.04) !important;
+}
+
+/* 페이지 숫자는 모달 아래쪽 고정 */
+.modal-page-indicator{
+    left:50% !important;
+    right:auto !important;
+    bottom:31px !important;
+    transform:translateX(-50%) !important;
+}
+
+/* 말풍선 때문에 내용이 겹치지 않도록 오른쪽 여백 유지 */
+.modal-card:not(.review-mode) .modal-page-info{
+    padding-right:300px !important;
+}
+
+@media (max-width:1250px), (max-height:760px){
+    .review-bubble{
+        display:none !important;
+    }
+
+    .modal-card:not(.review-mode) .modal-page-info{
+        padding-right:0 !important;
+    }
+
+    .modal-page-btn.next{
+        right:42px !important;
+        top:auto !important;
+        bottom:24px !important;
+        transform:none !important;
+    }
+
+    .modal-page-btn.prev{
+        left:42px !important;
+        top:auto !important;
+        bottom:24px !important;
+        transform:none !important;
+    }
+}
+
+@media (max-width:900px){
+    .intro-hero .hero-map{
+        animation:none !important;
+        transform:none !important;
+        padding:40px 70px 54px !important;
+    }
+}
+
+
+/* 리뷰 버튼 배치: 덤즈다운 / 점수 / 덤즈업 */
+.review-actions{
+    justify-content:center !important;
+    gap:14px !important;
+}
+
+.review-actions strong{
+    order:0 !important;
+    min-width:54px !important;
+    text-align:center !important;
+    margin-left:0 !important;
+}
+
+.review-actions button{
+    flex:0 0 auto !important;
+}
+
+
+/* 배너 슬라이드 전환 중 사각형으로 보이는 현상 방지 */
+.benefit-slider{
+    border-radius:28px !important;
+    overflow:hidden !important;
+    clip-path:inset(0 round 28px) !important;
+    isolation:isolate !important;
+    background:#fffaf3 !important;
+}
+
+.benefit-track{
+    height:100% !important;
+    border-radius:inherit !important;
+    overflow:hidden !important;
+    will-change:transform !important;
+    backface-visibility:hidden !important;
+}
+
+.benefit-slide{
+    height:100% !important;
+    border-radius:inherit !important;
+    overflow:hidden !important;
+    flex:0 0 100% !important;
+    backface-visibility:hidden !important;
+}
+
+.benefit-slide img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    border-radius:inherit !important;
+    display:block !important;
+    transform:translateZ(0) !important;
+}
+
+/* 지도 줌인/줌아웃 확실히 보이게: 이미지 박스 자체를 크게 잡고 움직임 */
+.intro-hero{
+    overflow:hidden !important;
+}
+
+.intro-hero .hero-map{
+    position:absolute !important;
+    left:-4% !important;
+    top:-4% !important;
+    width:108% !important;
+    height:108% !important;
+    max-width:none !important;
+    max-height:none !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    padding:56px 120px 64px !important;
+    opacity:.94 !important;
+    transform-origin:center center !important;
+    animation:mapZoomVisible 5.8s ease-in-out infinite alternate !important;
+    will-change:transform !important;
+}
+
+@keyframes mapZoomVisible{
+    0%{
+        transform:scale(0.94);
+    }
+    100%{
+        transform:scale(1.08);
+    }
+}
+
+/* 남아있는 핀/장식 레이어는 완전히 제거 */
+.map-pin-layer,
+.map-deco-layer,
+.map-pin,
+.map-glow,
+.map-ring,
+.map-line,
+.map-spark{
+    display:none !important;
+    visibility:hidden !important;
+    opacity:0 !important;
+}
+
+/* 이미지 첨부 필드 */
+.file-input{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid rgba(255,250,243,.22);
+    border-radius:14px;
+    background:rgba(255,250,243,.08);
+    color:#fffaf3;
+    font-size:15px;
+    font-family:inherit;
+}
+
+.file-input::file-selector-button{
+    margin-right:12px;
+    border:none;
+    border-radius:999px;
+    padding:9px 14px;
+    background:#fffaf3;
+    color:#2f241d;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.file-help{
+    margin-top:8px;
+    font-size:13px;
+    line-height:1.5;
+    color:rgba(255,250,243,.62);
+}
+
+/* 작은 화면에서는 지도 움직임만 끔 */
+@media (max-width:900px){
+    .intro-hero .hero-map{
+        animation:none !important;
+        transform:none !important;
+        left:0 !important;
+        top:0 !important;
+        width:100% !important;
+        height:100% !important;
+        padding:40px 70px 54px !important;
+    }
+}
+
+
+/* Before You Go 영역: 기울어진 느낌 제거 */
+.benefit-heading{
+    transform:none !important;
+    border-radius:30px !important;
+}
+
+.benefit-heading::after{
+    transform:none !important;
+}
+
+.benefit-heading::before{
+    transform:none !important;
+}
+
+.benefit-copy{
+    transform:none !important;
+}
+
+.benefit-slider{
+    transform:none !important;
+    border-radius:28px !important;
+    overflow:hidden !important;
+    clip-path:inset(0 round 28px) !important;
+    isolation:isolate !important;
+}
+
+.benefit-slider:hover{
+    transform:none !important;
+}
+
+/* 배너: fade 전환 방식으로 변경해서 전환 중 네모가 되는 현상 방지 */
+.benefit-track{
+    position:relative !important;
+    width:100% !important;
+    height:100% !important;
+    display:block !important;
+    transform:none !important;
+    transition:none !important;
+    overflow:hidden !important;
+    border-radius:inherit !important;
+}
+
+.benefit-slide{
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    display:block !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+    transition:opacity .65s ease !important;
+    border-radius:inherit !important;
+    overflow:hidden !important;
+}
+
+.benefit-slide.active{
+    opacity:1 !important;
+    pointer-events:auto !important;
+    z-index:2 !important;
+}
+
+.benefit-slide img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    display:block !important;
+    border-radius:inherit !important;
+}
+
+/* 박물관 카드 위쪽 선 위치 조정 */
+.content-top{
+    position:static !important;
+    top:auto !important;
+    padding-bottom:10px !important;
+    margin-bottom:24px !important;
+    border-bottom:1px solid #d8c7ad !important;
+    background:transparent !important;
+}
+
+.card-grid{
+    padding-top:0 !important;
+}
+
+/* 검색 결과 박스 첫 줄이 카드에 너무 붙지 않게 */
+.results-panel{
+    padding-top:8px !important;
+}
+
+
+/* 정정: Before You Go 박스 자체는 다시 기존 느낌 유지, 배너만 평평하게 */
+.benefit-heading{
+    border-radius:34px 28px 38px 26px !important;
+    background:
+        radial-gradient(circle at 92% 12%, rgba(139,115,89,.08) 0 58px, transparent 60px),
+        linear-gradient(102deg, rgba(255,250,243,.92), rgba(250,241,226,.70)) !important;
+    box-shadow:0 16px 42px rgba(47,36,29,.07) !important;
+}
+
+.benefit-heading::before{
+    transform:rotate(-2deg) !important;
+}
+
+.benefit-heading::after{
+    transform:rotate(2deg) !important;
+}
+
+/* 텍스트/배너는 기울지 않게 */
+.benefit-copy{
+    transform:none !important;
+}
+
+.benefit-slider{
+    transform:none !important;
+}
+
+.benefit-slider:hover{
+    transform:none !important;
+}
+
+/* 박물관 리스트 위쪽 선을 더 위로 올려서 구역 시작선처럼 보이게 */
+.results-panel{
+    position:relative !important;
+    padding-top:26px !important;
+}
+
+.results-panel::before{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:4px;
+    height:1px;
+    background:#d8c7ad;
+}
+
+.content-top{
+    border-bottom:none !important;
+    padding-bottom:8px !important;
+    margin-bottom:16px !important;
+}
+
+
+/* 찾은 박물관 / 총 241개 영역은 리스트 스크롤 시 상단에 고정 */
+.results-panel{
+    position:relative !important;
+}
+
+.content-top{
+    position:sticky !important;
+    top:0 !important;
+    z-index:20 !important;
+    padding:18px 0 16px !important;
+    margin-bottom:18px !important;
+    border-bottom:1px solid #d8c7ad !important;
+    background:
+        linear-gradient(#f4eee3 0%, #f4eee3 82%, rgba(244,238,227,0) 100%) !important;
+}
+
+/* 정보수정 영역 이미지 */
+.feedback-image-wrap{
+    margin-top:28px;
+    width:100%;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid rgba(255,250,243,.16);
+    background:rgba(255,250,243,.08);
+}
+
+.feedback-image-wrap img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    display:block;
+    opacity:.92;
+}
+
+@media (max-width:1100px){
+    .feedback-image-wrap img{
+        height:200px;
+    }
+}
+
+
+/* 찾은 박물관 / 총 241개 상단 문구 제거 */
+.content-top{
+    display:none !important;
+}
+
+/* 상단 선이 두 개로 보이는 현상 정리 */
+.results-panel::before{
+    display:none !important;
+    content:none !important;
+}
+
+.results-panel{
+    padding-top:0 !important;
+}
+
+.card-grid{
+    padding-top:0 !important;
+}
+
+
+/* 상단 로고 옆 인기 검색 박물관 UI */
+.topbar{
+    gap:26px !important;
+}
+
+.popular-strip{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-width:0;
+    flex:1;
+    max-width:820px;
+    padding:10px 16px;
+    border:1px solid #dccdb8;
+    border-radius:999px;
+    background:rgba(255,250,243,.58);
+}
+
+.popular-label{
+    flex:0 0 auto;
+    font-size:13px;
+    font-weight:800;
+    color:#2f241d;
+    letter-spacing:-.2px;
+    padding-right:14px;
+    border-right:1px solid #d8c7ad;
+}
+
+.popular-items{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.popular-items button{
+    border:none;
+    border-radius:999px;
+    padding:8px 12px;
+    background:#efe2d0;
+    color:#5f4c3d;
+    font-size:13px;
+    font-weight:700;
+    cursor:default;
+}
+
+.popular-items button:nth-child(1){
+    background:#2f241d;
+    color:#fffaf3;
+}
+
+@media (max-width:1180px){
+    .popular-strip{
+        max-width:560px;
+    }
+
+    .popular-items button:nth-child(3){
+        display:none;
+    }
+}
+
+@media (max-width:900px){
+    .popular-strip{
+        display:none !important;
+    }
+}
+
+
+/* 기존 인기 검색 pill UI 숨김 */
+.popular-strip{
+    display:none !important;
+}
+
+/* 상단 인기순위 바: 참고 이미지처럼 가로 랭킹 UI */
+.topbar{
+    gap:28px !important;
+}
+
+.popular-rankbar{
+    flex:1;
+    min-width:0;
+    height:58px;
+    display:grid;
+    grid-template-columns:260px 54px minmax(260px, 1fr) minmax(230px, .8fr) 46px;
+    align-items:center;
+    border-radius:0;
+    overflow:hidden;
+    background:#fffaf3;
+    border:1px solid #dccdb8;
+}
+
+.rankbar-title{
+    height:100%;
+    display:flex;
+    align-items:center;
+    padding:0 22px;
+    background:#66746b;
+    color:#fffaf3;
+    font-weight:900;
+    font-size:18px;
+    letter-spacing:-.4px;
+}
+
+.rankbar-plus{
+    width:54px;
+    height:100%;
+    border:none;
+    border-left:1px solid rgba(255,250,243,.22);
+    border-right:1px solid #dccdb8;
+    background:#66746b;
+    color:#fffaf3;
+    font-size:32px;
+    line-height:1;
+    cursor:default;
+}
+
+.rankbar-current{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:0 22px;
+    min-width:0;
+}
+
+.rank-number{
+    width:36px;
+    height:36px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#166d64;
+    color:#fffaf3;
+    font-size:20px;
+    font-weight:900;
+    flex:0 0 auto;
+}
+
+.rankbar-current strong{
+    color:#166d64;
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:-.5px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.rankbar-meta{
+    display:flex;
+    justify-content:flex-end;
+    gap:18px;
+    padding:0 18px;
+    color:#6f6258;
+    font-size:16px;
+    white-space:nowrap;
+}
+
+.rankbar-meta span + span{
+    padding-left:18px;
+    border-left:1px solid #dccdb8;
+}
+
+.rankbar-control{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:0;
+    color:#9b948d;
+    font-size:18px;
+    border-left:1px solid #eee4d6;
+    line-height:1;
+}
+
+@media (max-width:1280px){
+    .popular-rankbar{
+        grid-template-columns:210px 46px minmax(220px, 1fr) 46px;
+    }
+
+    .rankbar-meta{
+        display:none;
+    }
+}
+
+@media (max-width:980px){
+    .popular-rankbar{
+        display:none !important;
+    }
+}
+
+
+/* 이전 인기순위 UI 숨김 */
+.popular-strip,
+.popular-rankbar{
+    display:none !important;
+}
+
+/* 로고 옆: 이름만 봐도 흥미로운 박물관 소개 배너 */
+.topbar{
+    gap:28px !important;
+}
+
+.discovery-bar{
+    flex:1;
+    min-width:0;
+    height:58px;
+    display:grid;
+    grid-template-columns:180px minmax(0, 1fr) 46px;
+    align-items:center;
+    border:1px solid #dccdb8;
+    background:#fffaf3;
+    overflow:hidden;
+}
+
+.discovery-title{
+    height:100%;
+    display:flex;
+    align-items:center;
+    padding:0 22px;
+    background:#66746b;
+    color:#fffaf3;
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:-.4px;
+}
+
+.discovery-list{
+    position:relative;
+    height:100%;
+    overflow:hidden;
+}
+
+.discovery-item{
+    position:absolute;
+    inset:0;
+    display:grid;
+    grid-template-columns:42px max-content minmax(0, 1fr);
+    align-items:center;
+    gap:14px;
+    padding:0 24px;
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .45s ease, transform .45s ease;
+    pointer-events:none;
+}
+
+.discovery-item.active{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+}
+
+.discovery-number{
+    width:34px;
+    height:34px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#166d64;
+    color:#fffaf3;
+    font-size:18px;
+    font-weight:900;
+}
+
+.discovery-item strong{
+    color:#166d64;
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:-.5px;
+    white-space:nowrap;
+}
+
+.discovery-item em{
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color:#6f6258;
+    font-style:normal;
+    font-size:16px;
+}
+
+.discovery-control{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:#9b948d;
+    border-left:1px solid #eee4d6;
+    font-size:18px;
+    line-height:1;
+}
+
+@media (max-width:1260px){
+    .discovery-bar{
+        grid-template-columns:150px minmax(0, 1fr) 42px;
+    }
+
+    .discovery-title{
+        font-size:16px;
+        padding:0 16px;
+    }
+
+    .discovery-item{
+        grid-template-columns:38px minmax(130px, max-content) minmax(0, 1fr);
+        padding:0 18px;
+        gap:10px;
+    }
+
+    .discovery-item strong{
+        font-size:18px;
+    }
+
+    .discovery-item em{
+        font-size:14px;
+    }
+}
+
+@media (max-width:960px){
+    .discovery-bar{
+        display:none !important;
+    }
+}
+
+
+/* 오늘의 발견 배너 미세 조정 */
+.discovery-bar{
+    flex:0 1 760px !important;
+    max-width:760px !important;
+    margin-right:34px !important;
+    grid-template-columns:210px minmax(0, 1fr) 44px !important;
+}
+
+.discovery-title{
+    justify-content:center !important;
+    text-align:center !important;
+    padding:0 18px !important;
+}
+
+.discovery-item{
+    grid-template-columns:38px max-content minmax(0, 1fr) !important;
+    gap:8px !important;
+    padding:0 18px !important;
+}
+
+.discovery-number{
+    width:34px !important;
+    height:34px !important;
+}
+
+.discovery-item strong{
+    margin-right:4px !important;
+}
+
+.discovery-control{
+    font-size:0 !important;
+    gap:3px !important;
+}
+
+.discovery-control span{
+    display:block;
+    width:22px;
+    height:14px;
+    position:relative;
+    font-size:0;
+}
+
+/* 위 화살표 */
+.discovery-control span:nth-child(1)::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:5px;
+    width:9px;
+    height:9px;
+    border-left:2px solid #9b948d;
+    border-top:2px solid #9b948d;
+    transform:translateX(-50%) rotate(45deg);
+}
+
+/* 일시정지 */
+.discovery-control span:nth-child(2)::before,
+.discovery-control span:nth-child(2)::after{
+    content:"";
+    position:absolute;
+    top:1px;
+    width:3px;
+    height:13px;
+    border-radius:999px;
+    background:#9b948d;
+}
+
+.discovery-control span:nth-child(2)::before{
+    left:7px;
+}
+
+.discovery-control span:nth-child(2)::after{
+    right:7px;
+}
+
+/* 아래 화살표 */
+.discovery-control span:nth-child(3)::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    width:9px;
+    height:9px;
+    border-right:2px solid #9b948d;
+    border-bottom:2px solid #9b948d;
+    transform:translateX(-50%) rotate(45deg);
+}
+
+@media (max-width:1280px){
+    .discovery-bar{
+        flex:0 1 640px !important;
+        max-width:640px !important;
+        margin-right:20px !important;
+        grid-template-columns:170px minmax(0, 1fr) 42px !important;
+    }
+
+    .discovery-item{
+        gap:7px !important;
+        padding:0 14px !important;
+    }
+}
+
+
+/* 오늘의 발견 배너: 박물관명/설명 텍스트 수직 정렬 보정 */
+.discovery-item{
+    align-items:center !important;
+}
+
+.discovery-item strong{
+    display:flex !important;
+    align-items:center !important;
+    height:100% !important;
+    line-height:1 !important;
+    padding-top:1px !important;
+}
+
+.discovery-item em{
+    display:flex !important;
+    align-items:center !important;
+    height:100% !important;
+    line-height:1.25 !important;
+    padding-top:4px !important;
+}
+
+.discovery-item:hover strong,
+.discovery-item:hover em{
+    text-decoration:none !important;
+}
+
+.discovery-item:hover strong{
+    color:#0f5f57 !important;
+}
+
+
+/* 오늘의 발견 색상: 사이트 베이지/브라운 톤으로 조정 */
+.discovery-title{
+    background:#8b7359 !important;
+    color:#fffaf3 !important;
+}
+
+.rank-number,
+.discovery-number{
+    background:#b88746 !important;
+    color:#fffaf3 !important;
+}
+
+.discovery-item strong{
+    color:#6f4e2f !important;
+}
+
+.discovery-item:hover strong{
+    color:#4f3824 !important;
+}
+
+.discovery-control{
+    padding:0 !important;
+}
+
+.discovery-control button{
+    width:100%;
+    height:33.333%;
+    border:none;
+    background:transparent;
+    color:#9b8a76;
+    font-size:0;
+    line-height:1;
+    cursor:pointer;
+    position:relative;
+    transition:.2s;
+}
+
+.discovery-control button:hover{
+    background:#f1e7d8;
+    color:#6f4e2f;
+}
+
+/* 위 화살표 버튼 */
+#discoveryPrev::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:8px;
+    height:8px;
+    border-left:2px solid currentColor;
+    border-top:2px solid currentColor;
+    transform:translate(-50%, -25%) rotate(45deg);
+}
+
+/* 일시정지/재생 버튼 */
+#discoveryPause{
+    font-size:15px !important;
+    font-weight:900;
+    font-family:Arial, sans-serif;
+}
+
+#discoveryPause.paused{
+    font-size:13px !important;
+}
+
+/* 아래 화살표 버튼 */
+#discoveryNext::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:8px;
+    height:8px;
+    border-right:2px solid currentColor;
+    border-bottom:2px solid currentColor;
+    transform:translate(-50%, -75%) rotate(45deg);
+}
+
+/* 예전 span 아이콘 스타일 무력화 */
+.discovery-control span{
+    display:none !important;
+}
+
+
+/* 첫 화면 문구 위치: 상단 로고 아래쪽으로 더 올림 */
+.hero-comment{
+    left:36px !important;
+    top:96px !important;
+    bottom:auto !important;
+    max-width:760px !important;
+}
+
+.hero-comment h1{
+    line-height:1.06 !important;
+}
+
+.hero-comment p{
+    margin-top:34px !important;
+    max-width:760px !important;
+}
+
+.hero-scroll{
+    left:36px !important;
+    top:660px !important;
+    bottom:auto !important;
+}
+
+/* 지도 줌인/줌아웃 확실히 보이게 최종 보정 */
+.intro-hero{
+    overflow:hidden !important;
+}
+
+.intro-hero .hero-map{
+    position:absolute !important;
+    left:-6% !important;
+    top:-6% !important;
+    width:112% !important;
+    height:112% !important;
+    max-width:none !important;
+    max-height:none !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    padding:56px 120px 64px !important;
+    opacity:.94 !important;
+    transform-origin:72% 46% !important;
+    animation:mapZoomFinalVisible 6.8s ease-in-out infinite alternate !important;
+    will-change:transform !important;
+}
+
+@keyframes mapZoomFinalVisible{
+    0%{
+        transform:scale(0.95) translate3d(0, 0, 0);
+    }
+    100%{
+        transform:scale(1.08) translate3d(-10px, 4px, 0);
+    }
+}
+
+/* 지도 위 핀/장식 효과는 계속 제거 */
+.map-pin-layer,
+.map-deco-layer,
+.map-pin,
+.map-glow,
+.map-ring,
+.map-line,
+.map-spark{
+    display:none !important;
+    visibility:hidden !important;
+    opacity:0 !important;
+}
+
+/* 작은 화면에서는 위치와 줌 보정 */
+@media (max-width:900px){
+    .hero-comment{
+        left:32px !important;
+        top:90px !important;
+    }
+
+    .hero-scroll{
+        left:32px !important;
+        top:auto !important;
+        bottom:70px !important;
+    }
+
+    .intro-hero .hero-map{
+        animation:none !important;
+        transform:none !important;
+        left:0 !important;
+        top:0 !important;
+        width:100% !important;
+        height:100% !important;
+        padding:40px 70px 54px !important;
+    }
+}
+
+
+/* 첫 화면 텍스트/버튼 최종 위치 조정 */
+.hero-comment{
+    left:36px !important;
+    top:78px !important;
+    bottom:auto !important;
+    max-width:700px !important;
+}
+
+.hero-comment h1{
+    max-width:690px !important;
+    line-height:1.04 !important;
+}
+
+/* 설명 문구가 지도 모양을 가리지 않도록 폭을 줄임 */
+.hero-comment p{
+    max-width:560px !important;
+    margin-top:28px !important;
+    line-height:1.75 !important;
+}
+
+/* 박물관 둘러보기 버튼도 위로 */
+.hero-scroll{
+    left:36px !important;
+    top:590px !important;
+    bottom:auto !important;
+}
+
+/* CSS 애니메이션이 안 먹는 경우를 대비해서 transform 적용 범위 확실히 */
+.intro-hero{
+    overflow:hidden !important;
+}
+
+.intro-hero .hero-map{
+    position:absolute !important;
+    left:-7% !important;
+    top:-7% !important;
+    width:114% !important;
+    height:114% !important;
+    max-width:none !important;
+    max-height:none !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    padding:56px 120px 64px !important;
+    opacity:.94 !important;
+    transform-origin:72% 46% !important;
+    will-change:transform !important;
+    animation:none !important; /* JS로 확실히 움직임 처리 */
+}
+
+/* 작은 화면 보정 */
+@media (max-width:900px){
+    .hero-comment{
+        left:32px !important;
+        top:82px !important;
+        max-width:560px !important;
+    }
+
+    .hero-comment p{
+        max-width:480px !important;
+    }
+
+    .hero-scroll{
+        left:32px !important;
+        top:auto !important;
+        bottom:70px !important;
+    }
+
+    .intro-hero .hero-map{
+        left:0 !important;
+        top:0 !important;
+        width:100% !important;
+        height:100% !important;
+        transform:none !important;
+        padding:40px 70px 54px !important;
+    }
+}
+
+
+/* 문구 수정 후 줄간격 보정 */
+.feedback-copy h2{
+    line-height:1.18 !important;
+}
+
+.feedback-copy p{
+    max-width:520px !important;
+    word-break:keep-all !important;
+}
+
+.benefit-copy .human-copy{
+    max-width:500px !important;
+    word-break:keep-all !important;
+}
+
+.review-head h3{
+    letter-spacing:-.6px !important;
+}
+
+
+/* 첫 화면 설명 문구가 어색하게 한 글자만 내려가지 않도록 조정 */
+.hero-comment p{
+    max-width:720px !important;
+    line-height:1.72 !important;
+    word-break:keep-all !important;
+}
+
+.hero-comment p br{
+    display:block;
+}
+
+
+/* 지도: 아무 기능 없이 줌인/줌아웃만 */
+.intro-hero{
+    overflow:hidden !important;
+}
+
+/* 기존 핀/장식/JS용 요소 전부 비활성화 */
+.map-pin-layer,
+.map-deco-layer,
+.map-pin,
+.map-glow,
+.map-ring,
+.map-line,
+.map-spark{
+    display:none !important;
+    visibility:hidden !important;
+    opacity:0 !important;
+}
+
+/* 지도를 감싸는 박스 자체를 확대/축소 */
+.hero-map-zoom-wrap{
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    transform-origin:center center !important;
+    animation:onlyMapZoom 7.5s ease-in-out infinite alternate !important;
+    will-change:transform !important;
+    z-index:0 !important;
+}
+
+/* 이미지 자체는 고정. 움직임은 래퍼가 담당 */
+.hero-map-zoom-wrap .hero-map{
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    max-height:none !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    padding:56px 120px 64px !important;
+    opacity:.94 !important;
+    transform:none !important;
+    animation:none !important;
+}
+
+@keyframes onlyMapZoom{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.08);
+    }
+}
+
+@media (max-width:900px){
+    .hero-map-zoom-wrap{
+        animation:none !important;
+        transform:none !important;
+    }
+
+    .hero-map-zoom-wrap .hero-map{
+        padding:40px 70px 54px !important;
+    }
+}
+
+
+/* 지도 줌 효과를 더 눈에 띄게 강화 */
+.hero-map-zoom-wrap{
+    animation:onlyMapZoomStrong 6.2s ease-in-out infinite alternate !important;
+    transform-origin:center center !important;
+}
+
+@keyframes onlyMapZoomStrong{
+    from{
+        transform:scale(0.96);
+    }
+    to{
+        transform:scale(1.16);
+    }
+}
+
+/* 지도 자체 여백을 조금 줄여서 확대 변화가 더 잘 보이게 */
+.hero-map-zoom-wrap .hero-map{
+    padding:38px 88px 48px !important;
+}
+
+
+/* 1페이지 리뷰 안내 말풍선 가운데 정렬 */
+.review-bubble{
+    text-align:center !important;
+}
+
+.review-bubble strong{
+    display:block !important;
+    width:100% !important;
+    text-align:center !important;
+}
+
+
+/* 리뷰 안내 말풍선 문구 줄바꿈/정렬 보정 */
+.review-bubble strong{
+    line-height:1.35 !important;
+    word-break:keep-all !important;
+}
+
+.review-bubble strong br{
+    display:block;
+}
+
