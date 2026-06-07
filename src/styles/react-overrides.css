@@ -960,31 +960,82 @@ button {
   background: transparent !important;
 }
 
+.explore-page .modal-page-indicator {
+  position: absolute !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: 26px !important;
+  z-index: 60 !important;
+  transform: translateX(-50%) !important;
+}
+
+.explore-page .modal-page-btn {
+  z-index: 58 !important;
+}
+
+.explore-page .modal-page-btn.next {
+  top: auto !important;
+  right: 18px !important;
+  bottom: 160px !important;
+  transform: none !important;
+}
+
+.explore-page .modal-page-btn.next:hover {
+  transform: scale(1.04) !important;
+}
+
+.explore-page .modal-page-btn.prev {
+  top: auto !important;
+  left: 28px !important;
+  bottom: 26px !important;
+  transform: none !important;
+}
+
+.explore-page .modal-card.review-mode .modal-page-btn.prev {
+  bottom: 26px !important;
+}
+
+.explore-page .modal-card.review-mode .modal-page-btn.prev:hover {
+  transform: scale(1.04) !important;
+}
+
+.explore-page .side-site-btn {
+  z-index: 54 !important;
+}
+
+@media (max-width: 1250px), (max-height: 760px) {
+  .explore-page .modal-page-btn.next {
+    right: 24px !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .explore-page .modal-page-btn.next:hover {
+    transform: translateY(-50%) scale(1.04) !important;
+  }
+
+  .explore-page .modal-card:not(.review-mode) .side-site-btn {
+    bottom: 88px !important;
+  }
+}
+
 .explore-page .modal-card.review-mode {
-  max-height: 88vh !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: #c8b79f transparent !important;
-}
-
-.explore-page .modal-card.review-mode::-webkit-scrollbar {
-  width: 8px !important;
-}
-
-.explore-page .modal-card.review-mode::-webkit-scrollbar-thumb {
-  background: #c8b79f !important;
-  border-radius: 999px !important;
+  overflow: hidden !important;
 }
 
 .explore-page .modal-card.review-mode .modal-pages {
-  overflow: visible !important;
+  overflow: hidden !important;
 }
 
 .explore-page .modal-card.review-mode .modal-page-review {
-  max-height: none !important;
-  overflow: visible !important;
-  padding-bottom: 18px !important;
+  display: block !important;
+  max-height: calc(82vh - 188px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 0 8px 82px 0 !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: #c8b79f transparent !important;
 }
 
 .explore-page .layout,
@@ -1624,4 +1675,107 @@ button {
   .explore-page .footer-copy {
     text-align: left;
   }
+}
+
+/* Final modal correction: keep review paging centered and push the review scroll rail outward. */
+.explore-page .modal-page-btn.next,
+.explore-page .modal-card.review-mode .modal-page-btn.prev {
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+}
+
+.explore-page .modal-page-btn.next:hover,
+.explore-page .modal-card.review-mode .modal-page-btn.prev:hover {
+  transform: translateY(-50%) scale(1.04) !important;
+}
+
+.explore-page .modal-card.review-mode {
+  width: min(980px, 90vw) !important;
+  max-width: 90vw !important;
+}
+
+.explore-page .modal-card.review-mode .modal-pages {
+  width: 100% !important;
+}
+
+.explore-page .modal-card.review-mode .modal-page-review {
+  max-height: calc(82vh - 176px) !important;
+  margin-right: -8px !important;
+  padding: 0 18px 82px 0 !important;
+}
+
+.explore-page .modal-card.review-mode .modal-page-btn.prev {
+  left: 28px !important;
+  top: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+}
+
+.explore-page .modal-card.review-mode .modal-page-btn.prev:hover {
+  transform: translateY(-50%) scale(1.04) !important;
+}
+
+@media (max-width: 1250px), (max-height: 760px) {
+  .explore-page .modal-page-btn.next {
+    right: 24px !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .explore-page .modal-page-btn.next:hover {
+    transform: translateY(-50%) scale(1.04) !important;
+  }
+
+  .explore-page .modal-card.review-mode .modal-page-btn.prev {
+    left: 24px !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+/* Keep modal arrows near the edge without covering the review content. */
+.explore-page .modal-page-btn {
+  width: 48px !important;
+  height: 48px !important;
+  font-size: 30px !important;
+}
+
+.explore-page .modal-card.review-mode .modal-page-btn.prev {
+  left: -22px !important;
+}
+
+.explore-page .modal-page-btn.next {
+  right: -22px !important;
+}
+
+@media (max-width: 760px) {
+  .explore-page .modal-card.review-mode .modal-page-btn.prev {
+    left: 10px !important;
+  }
+
+  .explore-page .modal-page-btn.next {
+    right: 10px !important;
+  }
+}
+
+/* Use slim in-card paging tabs so arrows never get clipped by the modal edge. */
+.explore-page .modal-page-btn {
+  width: 42px !important;
+  height: 58px !important;
+  font-size: 28px !important;
+  background: rgba(47, 36, 29, .08) !important;
+}
+
+.explore-page .modal-card.review-mode .modal-page-btn.prev {
+  left: 10px !important;
+  border-radius: 0 999px 999px 0 !important;
+}
+
+.explore-page .modal-page-btn.next {
+  right: 10px !important;
+  border-radius: 999px 0 0 999px !important;
 }

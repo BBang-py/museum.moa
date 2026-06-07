@@ -686,11 +686,12 @@ export default function ExplorePage({ language, onLanguageChange, onNavigate }) 
     }
   };
 
-  const handleFeedbackSubmit = (event) => {
+  const handleFeedbackSubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     const museumName = form.elements.feedbackMuseum?.value.trim();
     const feedbackText = form.elements.feedbackText?.value.trim();
+    const fileName = feedbackFileName;
 
     if (!museumName || !feedbackText) {
       setFeedbackNoticeType('error');
@@ -700,12 +701,31 @@ export default function ExplorePage({ language, onLanguageChange, onNavigate }) 
       return;
     }
 
-    setFeedbackNoticeType('success');
-    setFeedbackNotice(language === 'eng'
-      ? 'Your update has been checked.'
-      : '제보 내용이 확인되었습니다.');
-    form.reset();
-    setFeedbackFileName('');
+    try {
+      await fetch(REVIEW_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          type: 'feedbackUpdate',
+          museumName,
+          feedbackText,
+          fileName,
+          visitorId,
+        }),
+      });
+
+      setFeedbackNoticeType('success');
+      setFeedbackNotice(language === 'eng'
+        ? 'Your update has been checked.'
+        : '제보 내용이 확인되었습니다.');
+      form.reset();
+      setFeedbackFileName('');
+    } catch {
+      setFeedbackNoticeType('error');
+      setFeedbackNotice(language === 'eng'
+        ? 'Could not send the update. Please try again.'
+        : '제보를 보내지 못했습니다. 잠시 후 다시 시도해주세요.');
+    }
   };
 
   return (
@@ -1110,6 +1130,13 @@ function DetailModal({ isFavorite, language, museum, modalPage, setModalPage, on
   const [reviewText, setReviewText] = useState('');
   const [reviewMessage, setReviewMessage] = useState('');
 
+  useEffect(() => {
+    const currentPage = document.querySelector(
+      modalPage === 'review' ? '.modal-page-review' : '.modal-page-info'
+    );
+    currentPage?.scrollTo?.({ top: 0 });
+  }, [modalPage]);
+
   const handleTextReviewSubmit = (event) => {
     event.preventDefault();
     const trimmedText = reviewText.trim();
@@ -1120,7 +1147,7 @@ function DetailModal({ isFavorite, language, museum, modalPage, setModalPage, on
     }
 
     onAddTextReview(museum.name, {
-      author: reviewAuthor.trim() || (language === 'eng' ? 'Anonymous' : '익명'),
+      author: reviewAuthor.trim().slice(0, 5) || (language === 'eng' ? 'Anonymous' : '익명'),
       text: trimmedText,
       createdAt: new Date().toISOString(),
     });
@@ -1213,9 +1240,9 @@ function DetailModal({ isFavorite, language, museum, modalPage, setModalPage, on
               <form className="text-review-form" onSubmit={handleTextReviewSubmit}>
                 <input
                   value={reviewAuthor}
-                  onChange={(event) => setReviewAuthor(event.target.value)}
+                  onChange={(event) => setReviewAuthor(event.target.value.slice(0, 5))}
                   placeholder={language === 'eng' ? 'Name' : '이름'}
-                  maxLength={14}
+                  maxLength={5}
                 />
                 <input
                   value={reviewText}
