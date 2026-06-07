@@ -407,6 +407,15 @@ function getVisitorId() {
   return newVisitorId;
 }
 
+function postSheetData(payload) {
+  return fetch(REVIEW_API_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload),
+  });
+}
+
 function buildReviewState(votes = [], visitorId) {
   return votes.reduce((state, vote) => {
     const key = reviewKey(vote.museumName, vote.categoryKey);
@@ -636,16 +645,12 @@ export default function ExplorePage({ language, onLanguageChange, onNavigate }) 
     }));
 
     try {
-      await fetch(REVIEW_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          type: 'vote',
-          museumName,
-          categoryKey,
-          voteType: value > 0 ? 'up' : 'down',
-          visitorId,
-        }),
+      await postSheetData({
+        type: 'vote',
+        museumName,
+        categoryKey,
+        voteType: value > 0 ? 'up' : 'down',
+        visitorId,
       });
       await loadSharedReviewData();
     } catch {
@@ -669,16 +674,12 @@ export default function ExplorePage({ language, onLanguageChange, onNavigate }) 
     });
 
     try {
-      await fetch(REVIEW_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          type: 'textReview',
-          museumName,
-          author: review.author,
-          reviewText: review.text,
-          visitorId,
-        }),
+      await postSheetData({
+        type: 'textReview',
+        museumName,
+        author: review.author,
+        reviewText: review.text,
+        visitorId,
       });
       await loadSharedReviewData();
     } catch {
@@ -702,16 +703,12 @@ export default function ExplorePage({ language, onLanguageChange, onNavigate }) 
     }
 
     try {
-      await fetch(REVIEW_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          type: 'feedbackUpdate',
-          museumName,
-          feedbackText,
-          fileName,
-          visitorId,
-        }),
+      await postSheetData({
+        type: 'feedbackUpdate',
+        museumName,
+        feedbackText,
+        fileName,
+        visitorId,
       });
 
       setFeedbackNoticeType('success');
